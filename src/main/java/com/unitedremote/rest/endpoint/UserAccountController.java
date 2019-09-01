@@ -60,7 +60,7 @@ public class UserAccountController {
 				.collect(Collectors.toList()));
 	}
 
-	@PostMapping("/register")
+	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody UserAccountInput input) throws ResourceNotFoundException{
 
 		UserAccount existingUser = userAccountRepository.findByEmailIgnoreCase(input.getEmail());

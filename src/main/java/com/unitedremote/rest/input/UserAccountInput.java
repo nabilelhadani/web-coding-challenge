@@ -37,6 +37,7 @@ public class UserAccountInput {
 	private String password;
 	
     @Temporal(TemporalType.TIMESTAMP)
+    @Builder.Default
     private Date createdDate = new Date();;
 	
 }

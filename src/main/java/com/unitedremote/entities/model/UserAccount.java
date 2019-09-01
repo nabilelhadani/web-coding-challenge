@@ -51,6 +51,7 @@ public class UserAccount implements Serializable {
 	private String password;
 	
     @Temporal(TemporalType.TIMESTAMP)
+    @Builder.Default
     private Date createdDate = new Date();;
 	
 	private boolean isActive;
