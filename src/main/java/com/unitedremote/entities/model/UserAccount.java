@@ -3,7 +3,6 @@ package com.unitedremote.entities.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.NaturalId;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,29 +33,32 @@ public class UserAccount implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
-	private long userid;
-	
-	@Column(name = "first_name")
+	private long userId;
+
 	@NotBlank
 	private String firstName;
-	
-	@Column(name = "last_name")
+
 	@NotBlank
 	private String lastName;
-	
+
 	@NotBlank
+	@NaturalId
 	@Email
 	private String email;
-	
+
 	@NotBlank
 	@Size(min = 6)
 	private String password;
-	
-    @Temporal(TemporalType.TIMESTAMP)
-    @Builder.Default
-    private Date createdDate = new Date();;
-	
+
+	@Transient
+	@NotBlank
+	@Size(min = 6)
+	private String confirmPassword;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Builder.Default
+	private Date createdDate = new Date();;
+
 	private boolean isActive;
 
 }

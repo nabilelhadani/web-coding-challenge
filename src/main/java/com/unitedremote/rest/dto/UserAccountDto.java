@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class UserAccountDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private long userid;
+	private Long userId;
 	private String firstName;
 	private String lastName;
 	private String email;
